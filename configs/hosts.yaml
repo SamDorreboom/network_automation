@@ -1,20 +1,30 @@
 ---
-pdx-rtr-eos-01:
+r1-dev:
   hostname: 192.168.10.121
   groups:
-    - eos
+    - router
+    - deventer
 
-pdx-rtr-eos-02:
+r2-epe:
   hostname: 192.168.10.122
   groups:
-    - eos
+    - router
+    - epe
 
-pdx-rtr-eos-03:
+r3-erm:
   hostname: 192.168.10.123
   groups:
-    - eos
+    - router
+    - ermelo
 
-pdx-rtr-eos-04:
+S1:
   hostname: 192.168.10.124
   groups:
-    - eos
+    - switch
+    - epe
+
+S2:
+  hostname: 192.168.10.124
+  groups:
+    - switch
+    - ermelo

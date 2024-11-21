@@ -1,3 +1,6 @@
 ---
-eos:
-  platform: eos
+routers:
+  platform: ios
+
+swtiches:
+  platform: ios
