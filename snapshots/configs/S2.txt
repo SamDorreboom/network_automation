@@ -1,18 +1,18 @@
 ! Command: show running-config
-! device: pdx-rtr-eos-02 (vEOS-lab, EOS-4.27.0F)
+! device: pdx-rtr-eos-03 (vEOS-lab, EOS-4.27.0F)
 !
 ! boot system flash:/vEOS-lab.swi
 !
 no aaa root
 !
-username admin privilege 15 role network-admin secret sha512 $6$Kl2aP7aosClWdG9S$2CS1H8LQoedChmX5TtFx0VBkFNE.hymxJ2CsWWxKfdFVIqZudoqVennR00FiyBH1UGc27rpZmMC28JI8sSpD..
+username admin privilege 15 role network-admin secret sha512 $6$pH.laHZuhmfihqj8$gq0Lm3Gihocxlvc6Lg3g.HlcXlCMxy2BV6.SHdxqb5OrSzmui2iPOkhtQZbA6UiA2WUyzemSbI.M4k0ghY522/
 username suzie privilege 15 role network-admin secret sha512 $6$6zV.qw9F48hskMAL$DW01gDlj1MQbpeBfcLvN.wTVt.j1TTuDd1f7c91n6k5TDx41v5QNsdb7GAO9JyTZy4h1r3yA70Gfe8Jb4dBm01
 !
 transceiver qsfp default-mode 4x10G
 !
 service routing protocols model ribd
 !
-hostname pdx-rtr-eos-02
+hostname pdx-rtr-eos-03
 !
 spanning-tree mode mstp
 !
@@ -25,16 +25,16 @@ management api http-commands
       no shutdown
 !
 interface Ethernet1
-   description connection to pdx-rtr-eos-01
+   description connection to pdx-rtr-eos-04
    no switchport
-   ip address 10.0.12.2/24
+   ip address 10.0.34.3/24
    ip ospf network point-to-point
    ip ospf area 0.0.0.0
 !
 interface Ethernet2
-   description connection to pdx-rtr-eos-03
+   description connection to pdx-rtr-eos-02
    no switchport
-   ip address 10.0.23.2/24
+   ip address 10.0.23.3/24
    ip ospf network point-to-point
    ip ospf area 0.0.0.0
 !
@@ -52,7 +52,7 @@ interface Ethernet8
 !
 interface Management1
    vrf MGMT
-   ip address 192.168.10.122/24
+   ip address 192.168.10.123/24
 !
 ip routing
 no ip routing vrf MGMT
@@ -60,7 +60,7 @@ no ip routing vrf MGMT
 ip route vrf MGMT 0.0.0.0/0 192.168.10.1
 !
 router ospf 1
-   router-id 10.0.0.2
+   router-id 10.0.0.3
    max-lsa 12000
 !
 end

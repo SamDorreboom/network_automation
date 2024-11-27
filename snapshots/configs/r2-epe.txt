@@ -1,0 +1,215 @@
+Using 3452 out of 33554432 bytes
+!
+! Last configuration change at 09:53:44 UTC Wed Nov 27 2024 by cisco
+!
+version 17.3
+service timestamps debug datetime msec
+service timestamps log datetime msec
+! Call-home is enabled by Smart-Licensing.
+service call-home
+platform qfp utilization monitor load 80
+platform punt-keepalive disable-kernel-core
+!
+hostname R2-epe
+!
+boot-start-marker
+boot-end-marker
+!
+!
+vrf definition Mgmt-intf
+ !
+ address-family ipv4
+ exit-address-family
+ !
+ address-family ipv6
+ exit-address-family
+!
+enable secret 9 $9$g2WtKnYoBBr5i.$/ORU2fOx47cbJ0aTXluukIBzNGORcdv9oGu4PeA6vfY
+enable password Appel132
+!
+aaa new-model
+!
+!
+!
+!
+!
+!
+!
+!
+aaa session-id common
+!
+!
+!
+!
+!
+!
+!
+ip domain name hanze.co.nl
+!
+!
+!
+login on-success log
+!
+!
+!
+!
+!
+!
+!
+subscriber templating
+!
+!
+!
+!
+!
+!
+multilink bundle-name authenticated
+no device-tracking logging theft
+!
+!
+!
+!
+!
+crypto pki trustpoint TP-self-signed-3617780818
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-3617780818
+ revocation-check none
+ rsakeypair TP-self-signed-3617780818
+!
+crypto pki trustpoint SLA-TrustPoint
+ enrollment pkcs12
+ revocation-check crl
+!
+!
+crypto pki certificate chain TP-self-signed-3617780818
+ certificate self-signed 01 nvram:IOS-Self-Sig#8.cer
+crypto pki certificate chain SLA-TrustPoint
+ certificate ca 01 nvram:CiscoLicensi#1CA.cer
+!
+!
+no license feature hseck9
+license udi pid ISR4321/K9 sn FDO264600M0
+license boot suite FoundationSuiteK9
+memory free low-watermark processor 69075
+!
+diagnostic bootup level minimal
+!
+spanning-tree extend system-id
+!
+username cisco privilege 15 secret 9 $9$4ACITxg4Ygo89E$hoslBsBnW.MIe1cdPLVMtLrxyLGcgtqzwmgbsXl98CI
+!
+redundancy
+ mode none
+!
+!
+!
+!
+!
+!
+vlan internal allocation policy ascending
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0/0
+ ip address 10.0.6.2 255.255.255.252
+ negotiation auto
+!
+interface GigabitEthernet0/0/1
+ ip address 10.0.6.9 255.255.255.252
+ negotiation auto
+!
+interface GigabitEthernet0/1/0
+ switchport access vlan 4
+ switchport mode access
+!
+interface GigabitEthernet0/1/1
+ switchport access vlan 4
+ switchport mode access
+!
+interface GigabitEthernet0/1/2
+ switchport access vlan 4
+ switchport mode access
+!
+interface GigabitEthernet0/1/3
+ switchport access vlan 4
+ switchport mode access
+!
+interface GigabitEthernet0
+ vrf forwarding Mgmt-intf
+ no ip address
+ shutdown
+ negotiation auto
+!
+interface Vlan1
+ no ip address
+!
+interface Vlan3
+ no ip address
+ shutdown
+!
+interface Vlan4
+ ip address 172.16.10.1 255.255.255.0
+!
+ip http server
+ip http authentication local
+ip http secure-server
+ip forward-protocol nd
+ip tftp source-interface GigabitEthernet0
+ip route 0.0.0.0 0.0.0.0 10.0.6.1
+ip route 10.0.0.0 255.255.255.0 10.0.6.1
+ip route 10.0.6.12 255.255.255.252 10.0.6.1
+ip route 10.1.8.0 255.255.252.0 10.0.6.1
+ip route 172.16.4.0 255.255.252.0 10.0.6.1
+ip route 172.16.8.0 255.255.252.0 10.0.6.1
+ip route 192.168.0.0 255.255.255.0 10.0.6.10
+ip ssh time-out 60
+ip ssh authentication-retries 2
+!
+!
+!
+!
+!
+!
+!
+!
+!
+control-plane
+!
+!
+line con 0
+ password Appel132
+ stopbits 1
+line aux 0
+ stopbits 1
+line vty 0 4
+ transport input ssh
+!
+call-home
+ ! If contact email address in call-home is configured as sch-smart-licensing@cisco.com
+ ! the email address configured in Cisco Smart License Portal will be used as contact email address to send SCH notifications.
+ contact-email-addr sch-smart-licensing@cisco.com
+ profile "CiscoTAC-1"
+  active
+  destination transport-method http
+!
+!
+!
+!
+!
+!
+end
