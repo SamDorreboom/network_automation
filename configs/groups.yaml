@@ -1,5 +1,5 @@
 ---
-routers:
+router:
   platform: ios
 
 swtiches:
