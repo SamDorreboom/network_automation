@@ -1,17 +1,18 @@
 ---
 r2-epe:
   hostname: 172.16.10.1
-  username: cisco
-  password: Appel132
-  data:
-    secret: Appel123
-  connection_options:
-    napalm:
-      extras:
-        optional_args:
-          secret: Appel123
-    netmiko:
-      extras:
-        secret: Appel123
+  username: Sam
+  password: Test123!
+  #platform: ios
+  #data:
+   # secret: Appel123
+  #connection_options:
+   # napalm:
+    #  extras:
+     #   optional_args:
+      #    secret: Appel123
+ #   netmiko:
+  #    extras:
+   #     secret: Appel123
   groups:
     - router

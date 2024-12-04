@@ -1,4 +1,8 @@
 # Network CI/CD Pipeline Proof of Concept
+https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/sec_usr_ssh/configuration/xe-16/sec-usr-ssh-xe-16-book/sec-usr-ssh-sec-copy.pdf
+
+
+
 
 I learend so much building out this POC and I want to thank everyone that has checked out the blog series that references this code base. I hope you brave souls that have started building your own can use some of these tools or concepts in your future deployments. Please check out the blog posts where I go into detail about every phase!
 
