@@ -1,6 +1,26 @@
 # Network CI/CD Pipeline Proof of Concept
+
+## setup the routers
 https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/sec_usr_ssh/configuration/xe-16/sec-usr-ssh-xe-16-book/sec-usr-ssh-sec-copy.pdf
 
+! AAA authentication and authorization must be configured properly for SCP to work.
+aaa new-model
+aaa authentication login default local
+aaa authorization exec default local
+username Sam privilege 15 password 0 Test123!
+! SSH must be configured and functioning properly.
+ip ssh time-out 120
+ip ssh authentication-retries 3
+ip scp server enable
+
+https://www.cisco.com/c/en/us/td/docs/routers/ios/config/17-x/syst-mgmt/b-system-management/m_cm-config-versioning.html
+configure terminal
+archive
+path bootflash:myconfig
+maximum 14
+time-period 10
+end
+archive config
 
 
 

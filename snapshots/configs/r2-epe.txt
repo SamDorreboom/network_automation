@@ -1,5 +1,5 @@
 !
-! Last configuration change at 09:46:42 UTC Wed Dec 4 2024 by Sam
+! Last configuration change at 10:42:30 UTC Wed Dec 4 2024 by cisco
 !
 version 17.3
 service timestamps debug datetime msec
@@ -144,6 +144,10 @@ crypto pki certificate chain SLA-TrustPoint
 no license feature hseck9
 license udi pid ISR4321/K9 sn FDO264600M0
 license boot suite FoundationSuiteK9
+archive
+ path bootflash:myconfig
+ maximum 14
+ time-period 10
 memory free low-watermark processor 69075
 !
 diagnostic bootup level minimal
@@ -236,7 +240,7 @@ ip route 172.16.8.0 255.255.252.0 10.0.6.1
 ip route 192.168.0.0 255.255.255.0 10.0.6.10
 ip scp server enable
 !
-!         
+!
 !
 !
 !
